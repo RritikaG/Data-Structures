@@ -72,6 +72,39 @@ public class Linklist {
             System.out.println(" palindrome");
         }
     }
+    void remove_duplicate_from_sortedll()
+    {
+        Node curr=head;
+        while(curr!=null)
+        {
+
+            Node temp=curr;
+            while(temp!=null && temp.data==curr.data)
+            {
+                temp=temp.next;
+            }
+            curr.next=temp;
+            curr=curr.next;
+        }
+    }
+    void remove_duplicate_from_unsortedll()
+    {
+        Node ptr1=head,ptr2=null;
+        while(ptr1!=null && ptr1.next!=null)
+        {
+            ptr2=ptr1;
+            while(ptr2.next!=null)
+            {
+                if(ptr1.data == ptr2.next.data)
+                {
+                    ptr2.next=ptr2.next.next;
+                }
+                else
+                    ptr2=ptr2.next;
+            }
+            ptr1=ptr1.next;
+        }
+    }
 
     public static void main(String[] args)
     {
@@ -87,10 +120,8 @@ for(int i=0;i<n;i++)
 list.printlist();
 
 list.checkpalindrome();
-        
 
+list.remove_duplicate_from_unsortedll();
+list.printlist();
     }
-
-
-
 }
